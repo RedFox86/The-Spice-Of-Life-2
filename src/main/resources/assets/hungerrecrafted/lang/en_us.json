@@ -1,4 +1,5 @@
 {
 	"tooltip.hungerrecrafted.nutritional_value": "Nutritional Value: %s",
-	"tooltip.hungerrecrafted.times_eaten": "Eaten %s out of the last %s foods"
+	"tooltip.hungerrecrafted.times_eaten": "Eaten %s out of the last %s foods",
+	"tooltip.hungerrecrafted.not_recently_eaten": "Not eaten recently"
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @AutoRegisterCapability
 public class PlayerFoodHistory {
   private ArrayList<String> foodHistory = new ArrayList<>();
-  private final int MAX_HISTORY_SIZE = 30;
+  public static final int MAX_HISTORY_SIZE = 30;
 
   public ArrayList<String> getFoodHistory() {
     return foodHistory;
