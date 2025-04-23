@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.redfox.hungerrecrafted.mixin",
+  "package": "net.redfox.spiceoflife.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "hungerrecrafted.refmap.json",
+  "refmap": "spiceoflife.refmap.json",
   "mixins": [
     "PlayerMixin"
   ],

@@ -1,8 +1,8 @@
-package net.redfox.hungerrecrafted.networking.packet;
+package net.redfox.spiceoflife.networking.packet;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
-import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
+import net.redfox.spiceoflife.client.ClientFoodHistoryData;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;

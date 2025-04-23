@@ -1,11 +1,11 @@
-package net.redfox.hungerrecrafted.config;
+package net.redfox.spiceoflife.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class HungerRecraftedCommonConfigs {
+public class SpiceOfLifeCommonConfigs {
   public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
   public static final ForgeConfigSpec SPEC;
 
@@ -13,7 +13,7 @@ public class HungerRecraftedCommonConfigs {
   public static final ForgeConfigSpec.ConfigValue<Integer> MAX_HISTORY;
 
   static {
-    BUILDER.push("Common configs for RedFox86's Hunger Recrafted");
+    BUILDER.push("Common configs for RedFox86's The Spice of Life 2");
 
     NUTRITION_DECAY = BUILDER.comment("The sequence for the decay on the nutrition values of food. Note that each value is a flat value",
         "and so they are not applied on top of each other.", "1.0 means 100% of the nutritional value, while 0.0 means 0%."

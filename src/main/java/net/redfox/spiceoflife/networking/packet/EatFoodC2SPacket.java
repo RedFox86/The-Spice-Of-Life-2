@@ -1,10 +1,10 @@
-package net.redfox.hungerrecrafted.networking.packet;
+package net.redfox.spiceoflife.networking.packet;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
-import net.redfox.hungerrecrafted.history.PlayerFoodHistoryProvider;
-import net.redfox.hungerrecrafted.networking.ModMessages;
+import net.redfox.spiceoflife.history.PlayerFoodHistoryProvider;
+import net.redfox.spiceoflife.networking.ModMessages;
 
 import java.util.function.Supplier;
 

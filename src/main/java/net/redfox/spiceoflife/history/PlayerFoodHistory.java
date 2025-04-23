@@ -1,10 +1,10 @@
-package net.redfox.hungerrecrafted.history;
+package net.redfox.spiceoflife.history;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
-import net.redfox.hungerrecrafted.config.HungerRecraftedCommonConfigs;
+import net.redfox.spiceoflife.config.SpiceOfLifeCommonConfigs;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class PlayerFoodHistory {
   }
 
   public void addFood(String item) {
-    if (!(foodHistory.size() < HungerRecraftedCommonConfigs.MAX_HISTORY.get())) foodHistory.remove(foodHistory.size()-1);
+    if (!(foodHistory.size() < SpiceOfLifeCommonConfigs.MAX_HISTORY.get())) foodHistory.remove(foodHistory.size()-1);
     foodHistory.add(0, item);
   }
 

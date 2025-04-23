@@ -1,4 +1,4 @@
-package net.redfox.hungerrecrafted.event;
+package net.redfox.spiceoflife.event;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,17 +10,17 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.redfox.hungerrecrafted.HungerRecrafted;
-import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
-import net.redfox.hungerrecrafted.history.PlayerFoodHistoryProvider;
-import net.redfox.hungerrecrafted.networking.ModMessages;
-import net.redfox.hungerrecrafted.networking.packet.EatFoodC2SPacket;
-import net.redfox.hungerrecrafted.networking.packet.FoodHistorySyncS2CPacket;
-import net.redfox.hungerrecrafted.util.HungerHelper;
+import net.redfox.spiceoflife.SpiceOfLife;
+import net.redfox.spiceoflife.client.ClientFoodHistoryData;
+import net.redfox.spiceoflife.history.PlayerFoodHistoryProvider;
+import net.redfox.spiceoflife.networking.ModMessages;
+import net.redfox.spiceoflife.networking.packet.EatFoodC2SPacket;
+import net.redfox.spiceoflife.networking.packet.FoodHistorySyncS2CPacket;
+import net.redfox.spiceoflife.util.HungerHelper;
 import squeek.appleskin.api.event.FoodValuesEvent;
 import squeek.appleskin.api.food.FoodValues;
 
-@Mod.EventBusSubscriber(modid = HungerRecrafted.MOD_ID)
+@Mod.EventBusSubscriber(modid = SpiceOfLife.MOD_ID)
 public class ModEvents {
   @SubscribeEvent
   public static void onEatFood(LivingEntityUseItemEvent.Finish event) {
@@ -43,7 +43,7 @@ public class ModEvents {
   public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
     if (event.getObject() instanceof Player) {
       if (!event.getObject().getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).isPresent()) {
-        event.addCapability(ResourceLocation.fromNamespaceAndPath(HungerRecrafted.MOD_ID, "properties"), new PlayerFoodHistoryProvider());
+        event.addCapability(ResourceLocation.fromNamespaceAndPath(SpiceOfLife.MOD_ID, "properties"), new PlayerFoodHistoryProvider());
       }
     }
   }

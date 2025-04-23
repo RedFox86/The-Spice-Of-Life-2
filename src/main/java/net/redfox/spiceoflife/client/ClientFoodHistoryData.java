@@ -1,4 +1,4 @@
-package net.redfox.hungerrecrafted.client;
+package net.redfox.spiceoflife.client;
 
 import java.util.ArrayList;
 

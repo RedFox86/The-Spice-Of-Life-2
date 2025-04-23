@@ -1,12 +1,12 @@
-package net.redfox.hungerrecrafted.event;
+package net.redfox.spiceoflife.event;
 
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.redfox.hungerrecrafted.HungerRecrafted;
-import net.redfox.hungerrecrafted.util.HungerHelper;
+import net.redfox.spiceoflife.SpiceOfLife;
+import net.redfox.spiceoflife.util.HungerHelper;
 
-@Mod.EventBusSubscriber(modid = HungerRecrafted.MOD_ID)
+@Mod.EventBusSubscriber(modid = SpiceOfLife.MOD_ID)
 public class ClientEvents {
   @SubscribeEvent
   public static void onToolTip(ItemTooltipEvent event) {

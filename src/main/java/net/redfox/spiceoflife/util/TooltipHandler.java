@@ -1,4 +1,4 @@
-package net.redfox.hungerrecrafted.util;
+package net.redfox.spiceoflife.util;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
