@@ -14,10 +14,6 @@ public class ClientEvents {
     if (!event.getItemStack().isEdible()) return;
     if (event.getEntity() == null) return;
 
-    HungerHelper.addMultiplierAndSum(
-        ClientFoodHistoryData.get(),
-        HungerHelper.getItemNameFromStack(event.getItemStack()),
-        event.getToolTip()
-    );
+    HungerHelper.appendNutritionStats(event.getItemStack(), event.getToolTip());
   }
 }

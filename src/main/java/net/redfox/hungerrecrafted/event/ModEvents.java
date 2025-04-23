@@ -16,6 +16,8 @@ import net.redfox.hungerrecrafted.networking.ModMessages;
 import net.redfox.hungerrecrafted.networking.packet.EatFoodC2SPacket;
 import net.redfox.hungerrecrafted.networking.packet.FoodHistorySyncS2CPacket;
 import net.redfox.hungerrecrafted.util.HungerHelper;
+import squeek.appleskin.api.event.FoodValuesEvent;
+import squeek.appleskin.api.food.FoodValues;
 
 @Mod.EventBusSubscriber(modid = HungerRecrafted.MOD_ID)
 public class ModEvents {
@@ -26,6 +28,14 @@ public class ModEvents {
     if (!event.getItem().isEdible()) return;
 
     ModMessages.sendToServer(new EatFoodC2SPacket(HungerHelper.getItemNameFromStack(event.getItem())));
+  }
+
+  @SubscribeEvent
+  public static void onAppleSkinFoodEvent(FoodValuesEvent event) {
+    event.modifiedFoodValues = new FoodValues(
+        (int) (HungerHelper.getMultiplier() * event.modifiedFoodValues.hunger),
+        event.modifiedFoodValues.saturationModifier
+    );
   }
 
   @SubscribeEvent

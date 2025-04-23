@@ -26,8 +26,9 @@ public abstract class PlayerMixin {
       ServerPlayer serverPlayer = (ServerPlayer)(Object)this;
       FoodProperties properties = stack.getFoodProperties(serverPlayer);
       serverPlayer.getFoodData().eat(-properties.getNutrition(), -properties.getSaturationModifier());
-      
-      float multiplier = HungerHelper.getMultiplierAndSum(ClientFoodHistoryData.get(), HungerHelper.getItemNameFromStack(stack))[0];
+
+      HungerHelper.updateMultiplierAndSum(ClientFoodHistoryData.get(), HungerHelper.getItemNameFromStack(stack));
+      float multiplier = HungerHelper.getMultiplier();
       serverPlayer.getFoodData().eat((int)(properties.getNutrition()*multiplier), properties.getSaturationModifier());
       serverPlayer.connection.send(new ClientboundSetHealthPacket(
           serverPlayer.getHealth(),
