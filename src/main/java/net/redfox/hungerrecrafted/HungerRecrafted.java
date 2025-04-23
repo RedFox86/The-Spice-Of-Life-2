@@ -17,12 +17,12 @@ public class HungerRecrafted  {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "hungerrecrafted";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public HungerRecrafted(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        // Register the commonSetup method for modloading
+        // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
 
         context.registerConfig(ModConfig.Type.COMMON, HungerRecraftedCommonConfigs.SPEC, "hungerrecrafted-common.toml");
@@ -32,8 +32,8 @@ public class HungerRecrafted  {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ModMessages.register();
-        });
+        event.enqueueWork(
+            ModMessages::register
+        );
     }
 }

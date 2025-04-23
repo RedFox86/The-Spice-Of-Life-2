@@ -2,8 +2,10 @@ package net.redfox.hungerrecrafted.util;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.redfox.hungerrecrafted.HungerRecrafted;
 import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
 import net.redfox.hungerrecrafted.config.HungerRecraftedCommonConfigs;
 import oshi.util.tuples.Pair;
@@ -17,20 +19,20 @@ public class HungerHelper {
     final int sum = multiplierAndSum.getA();
     final float multiplier = multiplierAndSum.getB();
 
-    tooltip.add(Component.translatable(
+    tooltip.add(TooltipHandler.color(Component.translatable(
         "tooltip.hungerrecrafted.nutritional_value",
-        TooltipHandler.colorComponent(Component.literal(multiplier*100+"%"), TooltipHandler.getColorFromPercentage(multiplier*100)))
-    );
+        TooltipHandler.color(Component.literal(multiplier*100+"%"), TooltipHandler.getColorFromPercentage(multiplier*100))),
+     ChatFormatting.GRAY));
     if (sum != 0) {
-      tooltip.add(Component.translatable(
+      tooltip.add(TooltipHandler.colorWithItalics(Component.translatable(
           "tooltip.hungerrecrafted.times_eaten",
           TooltipHandler.getWordingFromNumber(sum),
           HungerRecraftedCommonConfigs.MAX_HISTORY.get()
-      ).withStyle(s -> s.withItalic(true)));
+      ), ChatFormatting.GRAY));
     } else {
-      tooltip.add(Component.translatable(
+      tooltip.add(TooltipHandler.colorWithItalics(Component.translatable(
           "tooltip.hungerrecrafted.not_recently_eaten"
-      ).withStyle(s -> s.withColor(ChatFormatting.DARK_AQUA).withItalic(true)));
+      ), ChatFormatting.DARK_AQUA));
     }
   }
 
@@ -48,6 +50,12 @@ public class HungerHelper {
   }
 
   public static String getItemNameFromStack(ItemStack stack) {
-    return ForgeRegistries.ITEMS.getKey(stack.getItem()).toString();
+    ResourceLocation name = ForgeRegistries.ITEMS.getKey(stack.getItem());
+    return (name != null) ? name.toString() : getNoItem();
+  }
+
+  private static String getNoItem() {
+    HungerRecrafted.LOGGER.error("Player ate a non-existent item! This could break things...");
+    return "minecraft:air";
   }
 }

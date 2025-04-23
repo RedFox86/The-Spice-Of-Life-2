@@ -51,11 +51,9 @@ public class ModEvents {
   public static void onPlayerClone(PlayerEvent.Clone event) {
     if (event.isWasDeath()) {
       event.getOriginal().reviveCaps();
-      event.getOriginal().getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(oldStore -> {
-        event.getEntity().getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(newStore -> {
-          newStore.copyFrom(oldStore);
-        });
-      });
+      event.getOriginal().getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(oldStore ->
+          event.getEntity().getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(newStore ->
+              newStore.copyFrom(oldStore)));
     }
     event.getOriginal().invalidateCaps();
   }
@@ -63,9 +61,8 @@ public class ModEvents {
   public static void onPlayerJoinWorld(EntityJoinLevelEvent event) {
     if (!event.getLevel().isClientSide()) {
       if (event.getEntity() instanceof ServerPlayer player) {
-        player.getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(history -> {
-          ModMessages.sendToPlayer(new FoodHistorySyncS2CPacket(history.getFoodHistory()), player);
-        });
+        player.getCapability(PlayerFoodHistoryProvider.PLAYER_FOOD_HISTORY).ifPresent(history ->
+            ModMessages.sendToPlayer(new FoodHistorySyncS2CPacket(history.getFoodHistory()), player));
       }
     }
   }

@@ -17,7 +17,7 @@ public class HungerRecraftedCommonConfigs {
 
     NUTRITION_DECAY = BUILDER.comment("The sequence for the decay on the nutrition values of food. Note that each value is a flat value",
         "and so they are not applied on top of each other.", "1.0 means 100% of the nutritional value, while 0.0 means 0%."
-    ).define("Nutrional Decay", Arrays.asList(1.0f, 1.0f, 1.0f, 0.75f, 0.5f, 0.25f, 0.0f));
+    ).define("Nutritional Decay", Arrays.asList(1.0f, 1.0f, 1.0f, 0.75f, 0.5f, 0.25f, 0.0f));
 
     MAX_HISTORY = BUILDER.comment("The maximum food history that is stored. In other words, the mod will remember the last N foods you",
         "ate, where N is the max history"

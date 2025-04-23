@@ -12,7 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PlayerFoodHistoryProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-  public static Capability<PlayerFoodHistory> PLAYER_FOOD_HISTORY = CapabilityManager.get(new CapabilityToken<PlayerFoodHistory>() {});
+  public static Capability<PlayerFoodHistory> PLAYER_FOOD_HISTORY = CapabilityManager.get(new CapabilityToken<>() {
+  });
 
   private PlayerFoodHistory foodHistory = null;
   private final LazyOptional<PlayerFoodHistory> optional = LazyOptional.of(this::createPlayerFoodHistory);
