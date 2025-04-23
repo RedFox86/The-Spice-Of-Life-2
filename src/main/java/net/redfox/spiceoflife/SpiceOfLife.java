@@ -25,7 +25,7 @@ public class SpiceOfLife {
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
 
-        context.registerConfig(ModConfig.Type.COMMON, SpiceOfLifeCommonConfigs.SPEC, "hungerrecrafted-common.toml");
+        context.registerConfig(ModConfig.Type.COMMON, SpiceOfLifeCommonConfigs.SPEC, "spiceoflife-common.toml");
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
