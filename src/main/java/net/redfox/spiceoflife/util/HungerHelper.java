@@ -28,7 +28,7 @@ public class HungerHelper {
           "tooltip.spiceoflife.times_eaten",
           TooltipHandler.getWordingFromNumber(sum),
           SpiceOfLifeCommonConfigs.MAX_HISTORY.get()
-      ), ChatFormatting.GRAY));
+      ), ChatFormatting.DARK_AQUA));
     } else {
       tooltip.add(TooltipHandler.colorWithItalics(Component.translatable(
           "tooltip.spiceoflife.not_recently_eaten"
