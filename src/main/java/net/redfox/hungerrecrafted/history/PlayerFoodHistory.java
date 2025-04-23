@@ -4,20 +4,20 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
+import net.redfox.hungerrecrafted.config.HungerRecraftedCommonConfigs;
 
 import java.util.ArrayList;
 
 @AutoRegisterCapability
 public class PlayerFoodHistory {
   private ArrayList<String> foodHistory = new ArrayList<>();
-  public static final int MAX_HISTORY_SIZE = 30;
 
   public ArrayList<String> getFoodHistory() {
     return foodHistory;
   }
 
   public void addFood(String item) {
-    if (!(foodHistory.size() < MAX_HISTORY_SIZE)) foodHistory.remove(foodHistory.size()-1);
+    if (!(foodHistory.size() < HungerRecraftedCommonConfigs.MAX_HISTORY.get())) foodHistory.remove(foodHistory.size()-1);
     foodHistory.add(0, item);
   }
 

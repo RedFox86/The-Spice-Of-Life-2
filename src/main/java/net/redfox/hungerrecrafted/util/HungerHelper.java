@@ -5,28 +5,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
-import net.redfox.hungerrecrafted.history.PlayerFoodHistory;
+import net.redfox.hungerrecrafted.config.HungerRecraftedCommonConfigs;
+import oshi.util.tuples.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HungerHelper {
-  private static final float[] MULTIPLIERS = new float[]{1.0f, 1.0f, 1.0f, 0.75f, 0.5f, 0.25f, 0.0f};
-
-  private static int sum;
-
-  public static int getSum() {
-    return sum;
-  }
-
-  public static float getMultiplier() {
-    return multiplier;
-  }
-
-  private static float multiplier;
-
   public static void appendNutritionStats(ItemStack stack, List<Component> tooltip) {
-    updateMultiplierAndSum(ClientFoodHistoryData.get(), getItemNameFromStack(stack));
+    Pair<Integer, Float> multiplierAndSum = getMultiplierAndSum(ClientFoodHistoryData.get(), HungerHelper.getItemNameFromStack(stack));
+    final int sum = multiplierAndSum.getA();
+    final float multiplier = multiplierAndSum.getB();
 
     tooltip.add(Component.translatable(
         "tooltip.hungerrecrafted.nutritional_value",
@@ -36,7 +25,7 @@ public class HungerHelper {
       tooltip.add(Component.translatable(
           "tooltip.hungerrecrafted.times_eaten",
           TooltipHandler.getWordingFromNumber(sum),
-          PlayerFoodHistory.MAX_HISTORY_SIZE
+          HungerRecraftedCommonConfigs.MAX_HISTORY.get()
       ).withStyle(s -> s.withItalic(true)));
     } else {
       tooltip.add(Component.translatable(
@@ -45,17 +34,17 @@ public class HungerHelper {
     }
   }
 
-  public static void updateMultiplierAndSum(ArrayList<String> foodHistory, String item) {
-    sum = 0;
+  public static Pair<Integer, Float> getMultiplierAndSum(ArrayList<String> foodHistory, String item) {
+    int sum = 0;
     for (String food : foodHistory) {
       if (food.equals(item)) {
         sum++;
       }
     }
 
-    if (sum > MULTIPLIERS.length-1) multiplier = MULTIPLIERS[MULTIPLIERS.length-1];
-    else if (!(sum == 0)) multiplier = MULTIPLIERS[sum-1];
-    else multiplier = 1;
+    if (sum > HungerRecraftedCommonConfigs.NUTRITION_DECAY.get().size()-1) return new Pair<>(sum, HungerRecraftedCommonConfigs.NUTRITION_DECAY.get().get(HungerRecraftedCommonConfigs.NUTRITION_DECAY.get().size()-1));
+    else if (!(sum == 0)) return new Pair<>(sum, HungerRecraftedCommonConfigs.NUTRITION_DECAY.get().get(sum-1));
+    else return new Pair<>(0, 1.0f);
   }
 
   public static String getItemNameFromStack(ItemStack stack) {

@@ -3,12 +3,9 @@ package net.redfox.hungerrecrafted.networking.packet;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
 import net.redfox.hungerrecrafted.history.PlayerFoodHistoryProvider;
 import net.redfox.hungerrecrafted.networking.ModMessages;
 
-import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class EatFoodC2SPacket {

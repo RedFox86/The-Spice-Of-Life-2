@@ -1,6 +1,5 @@
 package net.redfox.hungerrecrafted.util;
 
-import com.mojang.datafixers.kinds.IdF;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -25,7 +24,7 @@ public class TooltipHandler {
     };
   }
   public static String getWordingFromNumber(int num) {
-    if (num-1 < 10) return NUMBER_WORDS[num];
+    if (num-1 < 10) return NUMBER_WORDS[num-1];
     return num + " times";
   }
 }

@@ -1,6 +1,5 @@
 package net.redfox.hungerrecrafted.networking.packet;
 
-import com.google.common.graph.Network;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;

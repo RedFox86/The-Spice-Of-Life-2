@@ -11,6 +11,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.redfox.hungerrecrafted.HungerRecrafted;
+import net.redfox.hungerrecrafted.client.ClientFoodHistoryData;
 import net.redfox.hungerrecrafted.history.PlayerFoodHistoryProvider;
 import net.redfox.hungerrecrafted.networking.ModMessages;
 import net.redfox.hungerrecrafted.networking.packet.EatFoodC2SPacket;
@@ -33,7 +34,7 @@ public class ModEvents {
   @SubscribeEvent
   public static void onAppleSkinFoodEvent(FoodValuesEvent event) {
     event.modifiedFoodValues = new FoodValues(
-        (int) (HungerHelper.getMultiplier() * event.modifiedFoodValues.hunger),
+        (int) (HungerHelper.getMultiplierAndSum(ClientFoodHistoryData.get(), HungerHelper.getItemNameFromStack(event.itemStack)).getB() * event.modifiedFoodValues.hunger),
         event.modifiedFoodValues.saturationModifier
     );
   }
