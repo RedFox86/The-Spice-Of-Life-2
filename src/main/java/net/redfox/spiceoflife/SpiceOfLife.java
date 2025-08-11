@@ -3,11 +3,15 @@ package net.redfox.spiceoflife;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.redfox.spiceoflife.config.SpiceOfLifeCommonConfigs;
+import net.redfox.spiceoflife.event.AppleSkinEvents;
+import net.redfox.spiceoflife.event.ClientEvents;
+import net.redfox.spiceoflife.event.ModEvents;
 import net.redfox.spiceoflife.networking.ModMessages;
 import org.slf4j.Logger;
 
@@ -29,6 +33,10 @@ public class SpiceOfLife {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        if (ModList.get().isLoaded("appleskin")) {
+            MinecraftForge.EVENT_BUS.addListener(AppleSkinEvents::onAppleSkinFoodEvent);
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

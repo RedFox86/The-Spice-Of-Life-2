@@ -9,6 +9,7 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.redfox.spiceoflife.SpiceOfLife;
 import net.redfox.spiceoflife.client.ClientFoodHistoryData;
@@ -22,6 +23,7 @@ import squeek.appleskin.api.food.FoodValues;
 
 @Mod.EventBusSubscriber(modid = SpiceOfLife.MOD_ID)
 public class ModEvents {
+  final static boolean isAppleSkinLoaded = ModList.get().isLoaded("appleskin");
   @SubscribeEvent
   public static void onEatFood(LivingEntityUseItemEvent.Finish event) {
     if (!(event.getEntity() instanceof Player p)) return;
@@ -29,14 +31,6 @@ public class ModEvents {
     if (!event.getItem().isEdible()) return;
 
     ModMessages.sendToServer(new EatFoodC2SPacket(HungerHelper.getItemNameFromStack(event.getItem())));
-  }
-
-  @SubscribeEvent
-  public static void onAppleSkinFoodEvent(FoodValuesEvent event) {
-    event.modifiedFoodValues = new FoodValues(
-        (int) (HungerHelper.getMultiplierAndSum(ClientFoodHistoryData.get(), HungerHelper.getItemNameFromStack(event.itemStack)).getB() * event.modifiedFoodValues.hunger),
-        event.modifiedFoodValues.saturationModifier
-    );
   }
 
   @SubscribeEvent
