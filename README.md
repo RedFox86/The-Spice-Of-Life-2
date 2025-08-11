@@ -41,3 +41,5 @@ A: Of course! :P
 
 - [The Spice of Life](https://www.curseforge.com/minecraft/mc-mods/the-spice-of-life) - Original idea and logo
 - [The Spice of Life: Classic Edition](https://www.curseforge.com/minecraft/mc-mods/foodvariations) - Tutorial for using mixins
+
+Report bugs on the issue tracker at [github.com/RedFox86/The-Spice-Of-Life-2/issues](https://github.com/RedFox86/The-Spice-Of-Life-2/issues)
